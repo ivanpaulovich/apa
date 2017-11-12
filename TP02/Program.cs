@@ -114,7 +114,7 @@ namespace TP02
 
         private static void BuscarBST(
             int[] aleatorios, 
-            TBinarySTree arvore,
+            BinarySTree arvore,
             out TimeSpan tempoGasto,
             out int comparacoes)
         {
@@ -126,7 +126,7 @@ namespace TP02
             foreach (var item in aleatorios)
             {
                 int contador;
-                TTreeNode symbol = arvore.findSymbol(item, out contador);
+                TreeNode symbol = arvore.Pesquisar(item, out contador);
 
                 comparacoes += contador;
                 
