@@ -1,4 +1,4 @@
-﻿using SysBio.dataStructures;
+﻿using TP02.BST;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -50,9 +50,9 @@ namespace TP02
             EscolheNumerosAleatorios(aleatorios5k, out aleatorios1k, 1000);
             EscolheNumerosAleatorios(aleatorios1k, out aleatorios100, 100);
 
-            var bt10k = new TBinarySTree();
-            var bt5k = new TBinarySTree();
-            var bt1k = new TBinarySTree();
+            var bt10k = new BinarySTree();
+            var bt5k = new BinarySTree();
+            var bt1k = new BinarySTree();
 
             var hash10k = new hashtable(10000);
             var hash5k = new hashtable(5000);
@@ -143,28 +143,28 @@ namespace TP02
             int[] aleatorios1k,
             int[] aleatorios5k,
             int[] aleatorios10k,
-            TBinarySTree bt1k,
-            TBinarySTree bt5k,
-            TBinarySTree bt10k,
+            BinarySTree bt1k,
+            BinarySTree bt5k,
+            BinarySTree bt10k,
             hashtable hash1k,
             hashtable hash5k,
             hashtable hash10k)
         {
             foreach (var item in aleatorios10k)
             {
-                bt10k.insert(item, item);
+                bt10k.Inserir(item, item);
                 hash10k.insert(item, item.ToString());
             }
 
             foreach (var item in aleatorios5k)
             {
-                bt5k.insert(item, item);
+                bt5k.Inserir(item, item);
                 hash5k.insert(item, item.ToString());
             }
 
             foreach (var item in aleatorios1k)
             {
-                bt1k.insert(item, item);
+                bt1k.Inserir(item, item);
                 hash1k.insert(item, item.ToString());
             }
         }
