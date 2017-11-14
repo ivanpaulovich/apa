@@ -1,4 +1,5 @@
-﻿using TP02.BST;
+﻿using TP02.ABP;
+using TP02.Hash;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -50,13 +51,13 @@ namespace TP02
             EscolheNumerosAleatorios(aleatorios5k, out aleatorios1k, 1000);
             EscolheNumerosAleatorios(aleatorios1k, out aleatorios100, 100);
 
-            var bt10k = new BinarySTree();
-            var bt5k = new BinarySTree();
-            var bt1k = new BinarySTree();
+            var bt10k = new ArvoreBinariaPesquisa();
+            var bt5k = new ArvoreBinariaPesquisa();
+            var bt1k = new ArvoreBinariaPesquisa();
 
-            var hash10k = new hashtable(10000);
-            var hash5k = new hashtable(5000);
-            var hash1k = new hashtable(1000);
+            var hash10k = new HashEnderecamentoAberto(22159);
+            var hash5k = new HashEnderecamentoAberto(22159);
+            var hash1k = new HashEnderecamentoAberto(22159);
 
             PreencherEstruturas(
                 aleatorios1k, aleatorios5k, aleatorios10k,
@@ -88,7 +89,7 @@ namespace TP02
 
         private static void BuscarHash(
             int[] aleatorios100, 
-            hashtable hash1k,
+            HashEnderecamentoAberto hash1k,
             out TimeSpan tempoGasto,
             out int comparacoes)
         {
@@ -100,7 +101,7 @@ namespace TP02
             foreach (var item in aleatorios100)
             {
                 int contador;
-                var symbol = hash1k.retrieve(item, out contador);
+                var symbol = hash1k.Pesquisar(item, out contador);
                 comparacoes += contador;
 
                 if (symbol == null)
@@ -114,7 +115,7 @@ namespace TP02
 
         private static void BuscarBST(
             int[] aleatorios, 
-            BinarySTree arvore,
+            ArvoreBinariaPesquisa arvore,
             out TimeSpan tempoGasto,
             out int comparacoes)
         {
@@ -126,7 +127,7 @@ namespace TP02
             foreach (var item in aleatorios)
             {
                 int contador;
-                TreeNode symbol = arvore.Pesquisar(item, out contador);
+                No symbol = arvore.Pesquisar(item, out contador);
 
                 comparacoes += contador;
                 
@@ -143,29 +144,29 @@ namespace TP02
             int[] aleatorios1k,
             int[] aleatorios5k,
             int[] aleatorios10k,
-            BinarySTree bt1k,
-            BinarySTree bt5k,
-            BinarySTree bt10k,
-            hashtable hash1k,
-            hashtable hash5k,
-            hashtable hash10k)
+            ArvoreBinariaPesquisa bt1k,
+            ArvoreBinariaPesquisa bt5k,
+            ArvoreBinariaPesquisa bt10k,
+            HashEnderecamentoAberto hash1k,
+            HashEnderecamentoAberto hash5k,
+            HashEnderecamentoAberto hash10k)
         {
             foreach (var item in aleatorios10k)
             {
                 bt10k.Inserir(item, item);
-                hash10k.insert(item, item.ToString());
+                hash10k.Inserir(item, item.ToString());
             }
 
             foreach (var item in aleatorios5k)
             {
                 bt5k.Inserir(item, item);
-                hash5k.insert(item, item.ToString());
+                hash5k.Inserir(item, item.ToString());
             }
 
             foreach (var item in aleatorios1k)
             {
                 bt1k.Inserir(item, item);
-                hash1k.insert(item, item.ToString());
+                hash1k.Inserir(item, item.ToString());
             }
         }
     }
