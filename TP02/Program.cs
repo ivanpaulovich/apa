@@ -73,6 +73,14 @@ namespace TP02
             BuscarBST(aleatorios100, bt1k, out tempoBST1k, out compBST1k);
             BuscarBST(aleatorios100, bt5k, out tempoBST5k, out compBST5k);
             BuscarBST(aleatorios100, bt10k, out tempoBST10k, out compBST10k);
+            BuscarHash(aleatorios100, hash1k, out tempoHash1k, out compHash1k);
+            BuscarHash(aleatorios100, hash5k, out tempoHash5k, out compHash5k);
+            BuscarHash(aleatorios100, hash10k, out tempoHash10k, out compHash10k);
+
+
+            BuscarBST(aleatorios100, bt1k, out tempoBST1k, out compBST1k);
+            BuscarBST(aleatorios100, bt5k, out tempoBST5k, out compBST5k);
+            BuscarBST(aleatorios100, bt10k, out tempoBST10k, out compBST10k);
 
             BuscarHash(aleatorios100, hash1k, out tempoHash1k, out compHash1k);
             BuscarHash(aleatorios100, hash5k, out tempoHash5k, out compHash5k);
@@ -80,9 +88,9 @@ namespace TP02
 
             Console.WriteLine($"\tTempo(ms)\t\tComparacoes");
             Console.WriteLine($"\tHash\tBST\t\tHash\tBST");
-            Console.WriteLine($"1k\t{tempoHash1k.TotalMilliseconds}\t{tempoBST1k.TotalMilliseconds}\t\t{compBST1k.ToString()}\t{compHash1k.ToString()}");
-            Console.WriteLine($"5k\t{tempoHash5k.TotalMilliseconds}\t{tempoBST5k.TotalMilliseconds}\t\t{compBST5k.ToString()}\t{compHash5k.ToString()}");
-            Console.WriteLine($"10k\t{tempoHash10k.TotalMilliseconds}\t{tempoBST10k.TotalMilliseconds}\t\t{compBST10k.ToString()}\t{compHash10k.ToString()}");
+            Console.WriteLine($"1k\t{tempoHash1k.TotalMilliseconds}\t{tempoBST1k.TotalMilliseconds}\t\t{compHash1k.ToString()}\t{compBST1k.ToString()}");
+            Console.WriteLine($"5k\t{tempoHash5k.TotalMilliseconds}\t{tempoBST5k.TotalMilliseconds}\t\t{compHash5k.ToString()}\t{compBST5k.ToString()}");
+            Console.WriteLine($"10k\t{tempoHash10k.TotalMilliseconds}\t{tempoBST10k.TotalMilliseconds}\t\t{compHash10k.ToString()}\t{compBST10k.ToString()}");
 
             Console.ReadKey();
         }
